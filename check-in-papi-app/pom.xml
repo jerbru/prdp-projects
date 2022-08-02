@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>080a6f0f-76ba-4af9-9cd5-1c9398cc6e9a</groupId>
+    <artifactId>solutions-parent-pom</artifactId>
+    <version>1.0.1</version>
+    <relativePath>../parent-pom/pom.xml</relativePath>
+  </parent>
+
+  <groupId>com.mycompany</groupId>
+  <artifactId>check-in-papi-app</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>mule-application</packaging>
+
+  <name>check-in-papi-app</name>
+
+  <properties>
+
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.mule.tools.maven</groupId>
+        <artifactId>mule-maven-plugin</artifactId>
+        <!-- <extensions>true</extensions> -->
+        <configuration>
+          <cloudHubDeployment>
+            <uri>https://anypoint.mulesoft.com</uri>
+            <muleVersion>4.4.0</muleVersion>
+            <!-- <connectedAppClientId>${ap.clientid}</connectedAppClientId>
+            <connectedAppClientSecret>${ap.clientsecret}</connectedAppClientSecret>
+            <connectedAppGrantType>client_credentials</connectedAppGrantType> -->
+            <server>cloudhub-deploy</server>
+            <!-- <username>${username}</username>
+            <password>${password}</password> -->
+            <applicationName>checkin-api-jbr1-m</applicationName>
+            <environment>dev</environment>
+            <objectStoreV2>true</objectStoreV2>
+            <persistentQueues>false</persistentQueues>
+            <workers>1</workers>
+            <workerType>SMALL</workerType>
+            <properties>
+              <api.id>18030096</api.id>
+              <encrypt.key>secure12345</encrypt.key>
+              <anypoint.platform.client_id>9d95796328b941b0b13ec3635affc7b5</anypoint.platform.client_id>
+              <anypoint.platform.client_secret>Cb2b9a17f0cD47cB9cF8D67098635DFb</anypoint.platform.client_secret>
+            </properties>
+          </cloudHubDeployment>
+          <classifier>mule-application</classifier>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.mule.connectors</groupId>
+      <artifactId>mule-http-connector</artifactId>
+      <classifier>mule-plugin</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.mule.connectors</groupId>
+      <artifactId>mule-sockets-connector</artifactId>
+      <classifier>mule-plugin</classifier>
+    </dependency>
+    <dependency>
+      <groupId>080a6f0f-76ba-4af9-9cd5-1c9398cc6e9a</groupId>
+      <artifactId>check-in-papi</artifactId>
+      <version>1.0.0</version>
+      <classifier>oas</classifier>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>org.mule.modules</groupId>
+      <artifactId>mule-apikit-module</artifactId>
+      <classifier>mule-plugin</classifier>
+    </dependency>
+    <dependency>
+      <groupId>com.mulesoft.modules</groupId>
+      <artifactId>mule-secure-configuration-property-module</artifactId>
+      <classifier>mule-plugin</classifier>
+    </dependency>
+  </dependencies>
+
+</project>
